@@ -3,11 +3,12 @@ Clover
 *******
 
 Clover is a local movie library and Piratebay download assistant. With the
-help of `TMDB<https://themoviedb.org/>`_ you can download the genre and cover for your
+help of `TMDB <https://themoviedb.org/>`_ you can download the genre and cover for your
 favourite movies!
 
 .. image:: clover.png
     :width: 40pt
+
 
 
 How-To
@@ -28,7 +29,7 @@ Before start:
 
 After start:
 
-* Create a API-Key `TMDB<https://themoviedb.org/>`_ and enter it under Config > API
+* Create a API-Key `TMDB <https://themoviedb.org/>`_ and enter it under Config > API
 
 Now you can head to http://localhost/
 
@@ -38,6 +39,7 @@ There's a blacklisting approach in filenames which you'll find under Config.
 The filename needs to be in the following format:
 
 MovieName [date].(mkv|mp4)
+
 
 
 
@@ -60,4 +62,5 @@ Quality of code
 *******
 That's an old project and I have no intention to rewrite it.
 I now handle errors in my code, I promise ;D
+
 

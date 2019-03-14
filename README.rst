@@ -19,8 +19,7 @@ but some things still need to created manually at the beginning.
 
 Before start:
 
-* Create folder the folder /media/movies/complete or change it in
-    docker-compose
+* Create folder the folder /media/movies/complete or change it in docker-compose
 * Uncomment - ``command: "npm install"``
 * start docker-compose (``docker-compose up``)
 * After successfully loading all npm packages kill it (ctrl+c)
@@ -38,7 +37,7 @@ There's a blacklisting approach in filenames which you'll find under Config.
 
 The filename needs to be in the following format:
 
-MovieName [date].(mkv|mp4)
+*MovieName [date].(mkv|mp4)*
 
 
 

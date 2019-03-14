@@ -1,0 +1,23 @@
+extends layout
+block content
+    main.container-fluid
+        .row
+            for movie in data
+                .col-md-3.center-block.dex
+                  div.wrapper.img-rounded(id="#{movie.movie_id}")
+                        div.thumbnails.center-block
+                          if movie.movie_poster !== "undefined"
+                            img.poster(src='#{movie.movie_poster}')
+                          else
+                            img(src='notfound.jpg')
+                          span.glyphicon.glyphicon-remove.remove
+                        div.info.row.center-block
+                            aside.title.col-sm.text-center
+                                span.movieTitle !{movie.movie_name}
+                                  br
+                                  !{movie.movie_genre}
+                                aside.text-end
+                                    if movie.movie_local == true
+                                       button.location.btn.btn-md.btn-default(onclick="popup(#{movie.movie_id})") View
+            div#popup(style="visibility:hidden")
+

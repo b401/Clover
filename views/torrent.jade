@@ -1,0 +1,30 @@
+extends layout
+block content
+    main.container-fluid
+        .row
+            if data
+              for torrent in data
+                div.media.torrents
+                  div.media-left
+                    img.media-object(src="images/download.png",style="width:60px",id="#{torrent.id}")
+                  div.media-body
+                    h4.media-heading #{torrent.name}
+                    pre(style="background-color:transparent").
+                      Size: #{torrent.size}
+                      Seeders: #{torrent.seeders}
+                      Leechers: #{torrent.leechers}
+                      Date: #{torrent.uploadDate}
+                  hr
+//
+                .col-md-3.center-block.dex
+                      div.wrapper(id="#{torrent.id}")
+                          div.info.row.center-block
+                              aside.title.col-sm.text-center
+                                  !{torrent.name}
+                                  br
+                                  !{torrent.size}
+                                  br
+                                  !{torrent.uploadDate}
+                                  br
+                                  !{torrent.seeders} / !{torrent.leechers}
+                              button.location.download.btn.btn-md.btn-default Download

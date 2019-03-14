@@ -1,0 +1,65 @@
+doctype html
+html
+    head
+        title=Nexus
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        block css
+            link(rel='stylesheet', href='/stylesheets/style.css')
+            link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+        block scripts
+            script(src='//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+            script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+            script(src='javascripts/main.js')
+            script(src='javascripts/arrive.min.js')
+            script(src='javascripts/jquery.bpopup.min.js')
+    body
+        div#background
+        block header
+            nav
+            div#head.well
+                .container
+                    h1#title.col-md-6 #{title}
+                    div#search(role="main")
+                      form#search(action="/search",method="POST")
+                        label(for="Search")
+                        input#searchline.form-control.input-md.center-block.SearchInput(placeholder="Search",name="search",type="text")
+                        div.input-group-btn.searchbtn
+                          button.btn.btn-md.btn-default(type="submit")
+                            i.glyphicon.glyphicon-search
+                div#buttons
+                    a(href="/")
+                      button#Movies.navb.btn.btn-sm.btn-default(value="movies") Movies
+                    a(href="/config")
+                      button#config.navb.btn.btn-sm.btn-default(value="config") Config
+                    a(href="/update")
+                      button#update.navb.btn.btn-sm.btn-default(value="update") Update
+           div.dropstatus
+              button#status.btn.btn-primary.dropdown-toggle(type="button", data-toggle="dropdown") Status
+              ul.dropdown-menu.dropdown-menu-right
+
+
+        block content
+        block modal
+          div.modal.fade#infobox(role="dialog")
+            div.modal-dialog
+              div.modal-content
+                div.modal-header
+                  h5.modal-title#infotitle
+                  button.close(type="button",data-dismiss="modal")
+                div.modal-body#infomessage
+                div.modal-footer#infoquestion
+
+
+        block footer
+            footer.footer
+              div.container
+                span#footspan
+                  if sites
+                    if sites.currentSite !== 0
+                      a#prev(href='/#{sites.prevSite}') #{sites.prevSite}
+                      | /
+                      a#current(href='/#{sites.currentSite}') #{sites.currentSite}
+                    if sites.lastSite !== 0
+                      a#next(href='/#{sites.nextSite}') #{sites.nextSite}
+

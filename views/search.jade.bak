@@ -1,0 +1,18 @@
+extends layout
+block content
+    .container.index
+        for search in data
+            .col-md-4.dex
+                div.col-md-10.infoshadow
+                div.col-md-9.info
+                    if search.movie_poster !== ""
+                        img.thumbnail.img-thumbnail(src='#{search.movie_poster}')
+                    div.movieinfo
+                        aside.filmInfos
+                            p.title.col-sm-7 !{search.movie_name}
+                            p.genre.col-sm-7 !{search.movie_genre}
+                            if search.movie_local == True
+                                button.location.btn.btn-sm.btn-default(value="search._id") View 
+                            else
+                                button.location.btn.btn-sm.btn-default(value="search._id") Download
+

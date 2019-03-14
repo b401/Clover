@@ -1,0 +1,45 @@
+version: "2"
+services:
+  node:
+    image: "node:latest"
+    container_name: "clover"
+    user: "node"
+    working_dir: /home/node/app
+    depends_on:
+      - db
+    ports:
+      - 127.0.0.1:80:3000
+    environment:
+      - NODE_ENV=Production
+      - THEPIRATEBAY_DEFAULT_ENDPOINT=https://thepiratebay.org/
+    volumes:
+      - ./:/home/node/
+      - /media/movies/complete:/media:rw
+
+    # Install package.json
+    # command: "npm install"
+    # Start Prod
+    command: "npm start"
+    # Start Dev
+    # command: "npm run devstart"
+
+  db:
+    image: mongo:latest
+    container_name: "mongo"
+    environment:
+      - MONGO_DATA_DIR=/data/db
+    volumes:
+      - ./data/db:/data/db
+
+  torrent:
+    image: linuxserver/transmission
+    container_name: "transmission"
+    environment:
+      - PGID=1000
+      - PUID=1000
+    volumes:
+      - /media/movies:/downloads
+      - /media/movies/.config:/config
+      - /media/movies/watch:/watch
+    ports:
+      - 127.0.0.1:9091:9091

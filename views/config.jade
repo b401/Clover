@@ -1,0 +1,30 @@
+extends layout
+block content
+    main.container-fluid
+        div.container
+          div.shadow
+            form#configform(name="configform", method="post", action="/config")
+              div.form-group
+                label(for="Moviefolder") Path to Moviefolder
+                input.form-control(type="movie_folder",name="movie_folder",value="#{data.moviefolder}")
+              div.form-group
+                label(for="transmissionhost") Path to Transmission listener
+                input.form-control(type="transmission",name="transmission_host",value="#{data.transmission}")
+              div.form-group
+                label(for="Torrentfolder") Path to Torrenfolder
+                input.form-control(type="torrent_folder",name="torrent_folder",value="#{data.torrentfolder}")
+              div.form-group
+                label(for="tmdbkey") TMDB API key
+                input.form-control(type="tmdbkey",name="tmdb_key",value="#{data.tmdb}")
+              div.form-group
+                label(for="blacklist") Filter bad words :)
+                  br
+                  for blacklist in data.blacklist
+                    span.badge.badge-pill.blacklist.badge-info #{blacklist}
+                        span.del.glyphicon.glyphicon-minus(id="#{blacklist}")
+                  span.badge#add
+                    span.glyphicon.glyphicon-plus
+                //input.form-control(type="blacklist",name="blacklist",value="#{data.blacklist}")
+              button.btn.btn-primary(type="submit") Submit
+
+              p #{data.movie_folder}
